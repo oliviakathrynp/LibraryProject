@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+
+    <style>
+        a:link {
+        color: black;
+        text-decoration:none;
+        }
+
+        a:hover {
+            color:red;
+            background-color: transparent;
+        }
+
+    </style>
+</head>
+<body>
+<h1>My Library</h1>
+{% if not book_list: %}
+<p>Library is empty.</p>
+{% endif %}
+<ul>
+    {% for book in book_list %}
+    <a href="{{url_for('update_by_title', _title=book.title)}}" ><li>{{ book.title }} - {{book.author }} - {{ book.rating }}</li></a>
+    {% endfor %}
+</ul>
+<a href="{{url_for('add')}}">Add New Book</a>
+</body>
+</html>
